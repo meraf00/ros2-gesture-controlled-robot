@@ -22,21 +22,21 @@ def generate_launch_description():
         package='gazebo_ros',
         executable='spawn_entity.py',
         arguments=['-entity', 'robot', '-x', '0.0', '-y', '0.0', '-z', '1.0',
-                   '-file', PathJoinSubstitution([FindPackageShare(package_name),  'models', 'arm_1dof.urdf'])])
+                   '-file', PathJoinSubstitution([FindPackageShare(package_name),  'models', 'robot.urdf'])])
 
     # add joint_state_publisher
     joint_state_publisher = Node(
         package='joint_state_publisher',
         executable='joint_state_publisher',
         name='joint_state_publisher',
-        arguments=[PathJoinSubstitution([FindPackageShare(package_name), 'models', 'arm_1dof.urdf'])])
+        arguments=[PathJoinSubstitution([FindPackageShare(package_name), 'models', 'robot.urdf'])])
     
     # add robot_state_publisher
     robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
         name='robot_state_publisher',
-        arguments=[PathJoinSubstitution([FindPackageShare(package_name), 'models', 'arm_1dof.urdf'])])
+        arguments=[PathJoinSubstitution([FindPackageShare(package_name), 'models', 'robot.urdf'])])
 
 
 
