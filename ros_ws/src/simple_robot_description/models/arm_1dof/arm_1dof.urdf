@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+
+<robot name="arm_1dof" xmlns:xacro="http://www.ros.org/wiki/xacro">        
+    <material name="Black">
+        <color rgba="0.0 0.0 0.0 1.0" />
+    </material>
+    <material name="Red">
+        <color rgba="0.8 0.0 0.0 1.0" />
+    </material>
+    <material name="White">
+        <color rgba="1.0 1.0 1.0 1.0" />
+    </material>
+
+    <link name="bottom_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.1 0.1 0.5" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.1 0.1 0.5" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="100" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+    </link>
+
+    <gazebo reference="bottom_link">
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+    <link name="top_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0.05 0 0.2" />
+            <geometry>
+                <box size="0.1 0.1 0.4" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0.05 0 0.2" />
+            <geometry>
+                <box size="0.1 0.1 0.4" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+    </link>
+
+    <gazebo reference="top_link">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <joint name="joint1" type="revolute" >
+        <origin rpy="0 0 0" xyz="0.05 0 0.2" />
+        <parent link="bottom_link" />
+        <child link="top_link" />
+        <axis xyz="1 0 0" />
+        <limit effort="100.0" lower="-1.57" upper="1.57" velocity="1.0" />
+    </joint>    
+   
+    <ros2_control name="GazeboSystem" type="system">
+        <hardware>
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+        </hardware>
+
+        <joint name="joint1">
+            <command_interface name="position">
+                <param name="min">-6.2832</param>
+                <param name="max">6.2832</param>
+            </command_interface>
+            <state_interface name="position" />
+            <state_interface name="velocity" />
+            <state_interface name="effort" />
+        </joint>
+
+    </ros2_control>
+
+     <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+
+    <gazebo>
+        <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+            <!-- <robot_sim_type>gazebo_ros2_control/DefaultRobotHWSim</robot_sim_type> -->
+            <robot_sim_type>gazebo_ros2_control/GazeboSystem</robot_sim_type>
+            <parameters>/home/a/robotics-lab/ros2-gazebo-sim/src/simple_robot_description/config/arm_1dof.yaml</parameters>
+        </plugin>
+    </gazebo>
+</robot>
+
+<!-- Write a robot
+  link
+  joint
+  gazebo-ros-plugin
+
+get the robot state
+
+control the robot
+
+
+Task: Make it a 3 dof robot - with 
+	static base link-0
+	link-1 rotating Z
+	Link-2 roating X
+	link-3 roating X
+	
+	Write a node that subscribes to a topic set-joint-state
+	publish an array of 3 angles to set-joint-state topic
+	The robot should set the joints to the 3 angles
+	 -->

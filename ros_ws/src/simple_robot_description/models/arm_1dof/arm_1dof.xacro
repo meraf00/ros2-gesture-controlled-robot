@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+
+<robot name="arm_1dof" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="joints.xacro" />
+    
+    <material name="Black">
+        <color rgba="0.0 0.0 0.0 1.0" />
+    </material>
+    <material name="Red">
+        <color rgba="0.8 0.0 0.0 1.0" />
+    </material>
+    <material name="White">
+        <color rgba="1.0 1.0 1.0 1.0" />
+    </material>
+
+    <link name="bottom_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.1 0.1 0.5" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.1 0.1 0.5" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="100" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+    </link>
+
+    <gazebo reference="bottom_link">
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+    <link name="top_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0.05 0 0.2" />
+            <geometry>
+                <box size="0.1 0.1 0.4" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0.05 0 0.2" />
+            <geometry>
+                <box size="0.1 0.1 0.4" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+    </link>
+
+    <gazebo reference="top_link">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <joint name="joint1" type="revolute" >
+        <origin rpy="0 0 0" xyz="0.05 0 0.2" />
+        <parent link="bottom_link" />
+        <child link="top_link" />
+        <axis xyz="1 0 0" />
+        <limit effort="100.0" lower="-1.57" upper="1.57" velocity="1.0" />
+    </joint>    
+   
+    <xacro:config_ctr_gazebo /> 
+</robot>
