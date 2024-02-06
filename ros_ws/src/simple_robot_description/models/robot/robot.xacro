@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<robot name="four_wheel_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <!-- Body -->
 <xacro:property name="body_link_x_dim" value="1" />
@@ -24,7 +24,7 @@
 
 <!-- Robod body and wheel mass -->
 <xacro:property name="body_mass" value="${body_density*body_link_x_dim*body_link_y_dim*body_link_z_dim}" />
-<xacro:property name="wheel_mass" value="${-wheel_density*pi_const*wheel_link_radius*wheel_link_radius*wheel_link_length}" />
+<xacro:property name="wheel_mass" value="${wheel_density*pi_const*wheel_link_radius*wheel_link_radius*wheel_link_length}" />
 
 <!-- Moment of inertia of the whee -->
 <xacro:property name="Iz_wheel" value="${0.5*wheel_mass*wheel_link_radius*wheel_link_radius}" />

@@ -51,8 +51,8 @@
 
 <gazebo>
     <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
-        <robot_sim_type>gazebo_ros2_control/DefaultRobotHWSim</robot_sim_type>
-        <!-- <robot_sim_type>gazebo_ros2_control/GazeboSystem</robot_sim_type> -->
+        <!-- <robot_sim_type>gazebo_ros2_control/DefaultRobotHWSim</robot_sim_type> -->
+        <robot_sim_type>gazebo_ros2_control/GazeboSystem</robot_sim_type>
         <parameters>/home/a/robotics-lab/final-project/robotics-assignment/ros_ws/src/simple_robot_description/config/robot.yaml</parameters>
     </plugin>
 </gazebo>
