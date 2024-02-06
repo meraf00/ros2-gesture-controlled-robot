@@ -25,11 +25,11 @@ def generate_launch_description():
                    '-file', PathJoinSubstitution([FindPackageShare(package_name),  'models', 'robot.urdf'])])
 
     # add joint_state_publisher
-    joint_state_publisher = Node(
-        package='joint_state_publisher',
-        executable='joint_state_publisher',
-        name='joint_state_publisher',
-        arguments=[PathJoinSubstitution([FindPackageShare(package_name), 'models', 'robot.urdf'])])
+    # joint_state_publisher = Node(
+    #     package='joint_state_publisher',
+    #     executable='joint_state_publisher',
+    #     name='joint_state_publisher',
+    #     arguments=[PathJoinSubstitution([FindPackageShare(package_name), 'models', 'robot.urdf'])])
     
     # add robot_state_publisher
     robot_state_publisher = Node(
@@ -43,7 +43,7 @@ def generate_launch_description():
     ld.add_action(gazebo_launch)
     ld.add_action(simple_robot)
 
-    ld.add_action(joint_state_publisher)
+    # ld.add_action(joint_state_publisher)
     ld.add_action(robot_state_publisher)
 
 

@@ -4,6 +4,7 @@ from rclpy.node import Node
 from builtin_interfaces.msg import Duration
 from trajectory_msgs.msg import JointTrajectory , JointTrajectoryPoint
 
+
 # Define a class named TrajectoryPublisher that inherits from the Node class
 class TrajectoryPublisher(Node):
 
@@ -36,11 +37,12 @@ class TrajectoryPublisher(Node):
     #     # Create a JointTrajectoryPoint message and set its positions and time_from_start attributes
         point_msg = JointTrajectoryPoint()
         point_msg.positions = goal_positions
+        
         point_msg.time_from_start = Duration(sec=2)
 
 
     #     # Create a list of joint names containing a single value ('joint1')
-        joints = ['joint1']
+        joints = ['wheel1_joint']
 
     #     # Create a JointTrajectory message and set its joint_names attribute and append the point_msg to its points attribute
         my_trajectory_msg = JointTrajectory()

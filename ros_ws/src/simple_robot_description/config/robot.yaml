@@ -49,10 +49,16 @@ joint_trajectory_controller:
 joint_position_controller:
   ros__parameters:
     joints:
-      - joint1
+      - wheel1_joint
+      - wheel2_joint
+      - wheel3_joint
+      - wheel4_joint
 
     write_op_modes:
-      - joint1
+      - wheel1_joint
+      - wheel2_joint
+      - wheel3_joint
+      - wheel4_joint
     
     interface_name: position
 

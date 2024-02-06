@@ -57,18 +57,18 @@
         <geometry>
             <box size="${body_link_x_dim} ${body_link_y_dim} ${body_link_z_dim}" />
         </geometry>        
-        <origin rpy="0 0 0" xyz="0 0 0" />
+        <origin rpy="0 0 0" xyz="0 0 0.25" />
     </visual>
 
     <collision>
         <geometry>
             <box size="${body_link_x_dim} ${body_link_y_dim} ${body_link_z_dim}" />
         </geometry>        
-        <origin rpy="0 0 0" xyz="0 0 0" />
+        <origin rpy="0 0 0" xyz="0 0 0.25" />
     </collision>
 
     <inertial>
-        <origin rpy="0 0 0" xyz="0 0 0" />
+        <origin rpy="0 0 0" xyz="0 0 0.25" />
         <mass value="${body_mass}" />
         <inertia 
         ixx="${(1/12)*body_mass*(body_link_y_dim*body_link_y_dim+body_link_z_dim*body_link_z_dim)}"
