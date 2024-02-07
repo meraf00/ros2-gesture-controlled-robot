@@ -31,7 +31,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
          'console_scripts': [
-                'joint_commander = simple_robot_description.joint_commander:main',
+                'robot_controller = simple_robot_description.robot_controller:main',
         ],
     },
 )

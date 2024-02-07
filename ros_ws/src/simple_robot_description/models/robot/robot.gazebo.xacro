@@ -71,13 +71,13 @@
     <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_diff_drive.so">
         <update_rate>500</update_rate>
             
-        <num_wheel_pairs>2</num_wheel_pairs>
+        <!-- <num_wheel_pairs>2</num_wheel_pairs> -->
                 
         <left_joint>wheel2_joint</left_joint>
         <right_joint>wheel1_joint</right_joint>        
 
-        <left_joint>wheel4_joint</left_joint>
-        <right_joint>wheel3_joint</right_joint>        
+        <!-- <left_joint>wheel4_joint</left_joint>
+        <right_joint>wheel3_joint</right_joint>         -->
 
         <wheel_separation>${body_link_y_dim+wheel_link_length}</wheel_separation>
         <wheel_separation>${body_link_y_dim+wheel_link_length}</wheel_separation>
